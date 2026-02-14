@@ -62,7 +62,7 @@ export default function AdminLayout({
   }
 
   return (
-    <div className="min-h-screen bg-slate-950">
+    <div className="min-h-screen bg-slate-950 lg:flex">
       {/* Mobile sidebar backdrop */}
       {sidebarOpen && (
         <div
@@ -75,7 +75,7 @@ export default function AdminLayout({
       <motion.aside
         initial={false}
         animate={{ x: sidebarOpen ? 0 : '-100%' }}
-        className="fixed inset-y-0 left-0 z-50 w-64 bg-slate-900 border-r border-slate-800 lg:translate-x-0 lg:static lg:z-0"
+        className="fixed inset-y-0 left-0 z-50 w-64 bg-slate-900 border-r border-slate-800 lg:translate-x-0 lg:static lg:z-0 flex-shrink-0"
       >
         <div className="flex flex-col h-full">
           {/* Logo */}
@@ -134,7 +134,7 @@ export default function AdminLayout({
       </motion.aside>
 
       {/* Main content */}
-      <div className="lg:pl-64">
+      <div className="flex-1 lg:flex-initial lg:w-full">
         {/* Mobile header */}
         <header className="lg:hidden sticky top-0 z-30 bg-slate-900 border-b border-slate-800 px-4 py-4">
           <button
@@ -146,7 +146,7 @@ export default function AdminLayout({
         </header>
 
         {/* Page content */}
-        <main className="p-4 lg:p-6">{children}</main>
+        <main className="px-4 py-3 lg:px-6 lg:py-4">{children}</main>
       </div>
     </div>
   );
