@@ -14,7 +14,7 @@ export default function CustomCursor() {
   const [isClicking, setIsClicking] = useState(false);
   const [dots, setDots] = useState<CursorDot[]>(Array(8).fill({ x: 0, y: 0 }));
   const dotsRef = useRef<CursorDot[]>(Array(8).fill({ x: 0, y: 0 }));
-  const animationFrameRef = useRef<number>();
+  const animationFrameRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
