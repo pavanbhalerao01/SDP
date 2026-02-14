@@ -3,10 +3,11 @@ import { prisma } from '@/lib/prisma';
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const id = parseInt(params.id);
+    const { id: idString } = await params;
+    const id = parseInt(idString);
     await prisma.contactMessage.delete({ where: { id } });
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
