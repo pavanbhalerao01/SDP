@@ -33,23 +33,30 @@ export default function AdminLayout({
   const router = useRouter();
   const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const isLoginPage = pathname === '/admin/login';
 
   useEffect(() => {
-    if (status === 'unauthenticated') {
+    if (status === 'unauthenticated' && !isLoginPage) {
       router.push('/admin/login');
     } else if (status === 'authenticated' && (session?.user as any)?.role !== 'admin') {
       router.push('/');
     }
-  }, [status, session, router]);
+  }, [status, session, router, pathname, isLoginPage]);
 
   if (status === 'loading') {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-slate-950">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-cyan-400"></div>
       </div>
     );
   }
 
+  // If on login page, render without admin layout
+  if (isLoginPage) {
+    return <div className="min-h-screen bg-slate-950">{children}</div>;
+  }
+
+  // If not authenticated or not admin, don't render protected content
   if (status === 'unauthenticated' || (session?.user as any)?.role !== 'admin') {
     return null;
   }
