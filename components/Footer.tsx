@@ -1,9 +1,16 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { usePathname } from 'next/navigation';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const pathname = usePathname();
+
+  // Don't show footer on admin pages
+  if (pathname?.startsWith('/admin')) {
+    return null;
+  }
 
   return (
     <footer className="relative bg-slate-950/50 border-t border-purple-500/20 py-12 mt-20">

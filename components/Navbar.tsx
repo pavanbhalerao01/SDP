@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import AnimatedLogo from './AnimatedLogo';
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { HiMenu, HiX } from 'react-icons/hi';
 
 const navItems = [
@@ -17,6 +18,12 @@ const navItems = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Don't show navbar on admin pages
+  if (pathname?.startsWith('/admin')) {
+    return null;
+  }
 
   return (
     <motion.nav

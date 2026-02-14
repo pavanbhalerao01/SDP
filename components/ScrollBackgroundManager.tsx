@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import InteractiveBackground from './InteractiveBackground';
 import WaveBackground from './WaveBackground';
@@ -8,6 +9,12 @@ import GeometricBackground from './GeometricBackground';
 
 export default function ScrollBackgroundManager() {
   const [activeBackground, setActiveBackground] = useState<'hero' | 'middle' | 'footer'>('hero');
+  const pathname = usePathname();
+
+  // Don't show background on admin pages
+  if (pathname?.startsWith('/admin')) {
+    return null;
+  }
 
   useEffect(() => {
     const handleScroll = () => {

@@ -66,7 +66,7 @@ export default function CustomCursor() {
     <>
       {/* Main cursor - geometric shape */}
       <motion.div
-        className="fixed pointer-events-none z-50"
+        className="fixed pointer-events-none z-[9999]"
         style={{
           left: mousePosition.x,
           top: mousePosition.y,
@@ -119,7 +119,7 @@ export default function CustomCursor() {
         return (
           <motion.div
             key={index}
-            className="fixed pointer-events-none z-40"
+            className="fixed pointer-events-none z-[9998]"
             style={{
               left: dot.x - size / 2,
               top: dot.y - size / 2,
@@ -143,7 +143,7 @@ export default function CustomCursor() {
       {/* Outer circle on hover */}
       {isHovering && (
         <motion.div
-          className="fixed pointer-events-none z-40"
+          className="fixed pointer-events-none z-[9998]"
           style={{
             left: mousePosition.x,
             top: mousePosition.y,

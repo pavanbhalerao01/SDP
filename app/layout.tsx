@@ -5,6 +5,7 @@ import ScrollBackgroundManager from '@/components/ScrollBackgroundManager';
 import CustomCursor from '@/components/CustomCursor';
 import ClientOnly from '@/components/ClientOnly';
 import AuthProvider from '@/components/AuthProvider';
+import ConditionalLayout from '@/components/ConditionalLayout';
 import './globals.css';
 import { Inter } from 'next/font/google';
 
@@ -29,9 +30,9 @@ export default function RootLayout({
             <CustomCursor />
           </ClientOnly>
           <Navbar />
-          <main className="min-h-screen pt-24">
+          <ConditionalLayout>
             {children}
-          </main>
+          </ConditionalLayout>
           <Footer />
         </AuthProvider>
       </body>

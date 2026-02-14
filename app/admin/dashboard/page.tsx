@@ -79,12 +79,12 @@ export default function AdminDashboard() {
   ];
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       <div>
         <h1 className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
           Dashboard
         </h1>
-        <p className="text-gray-400 mt-2">
+        <p className="text-gray-400 mt-1">
           Welcome to the SDP Admin Dashboard
         </p>
       </div>
